@@ -8,11 +8,11 @@
 <h1>Contato: {{$contact->name}}</h1>
 
 <h3>
-    {{ $contact->number }}
+   Número: {{ $contact->number }}
 </h3>
 
 <h3>
-    {{ $contact->email }}
+ E-mail: {{ $contact->email }}
 </h3>
 
 <button class="btn btn-primary"><a href="{{ route('site.edit', ['contact' => $contact]) }}">Editar</a></button>

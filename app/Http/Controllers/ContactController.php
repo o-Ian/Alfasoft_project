@@ -25,7 +25,7 @@ class ContactController extends Controller
     {
         Contact::create($request->all());
 
-        return redirect()->route('site.create')->with('msg', 'Contato criado com sucesso!');
+        return redirect()->route('site.home')->with('msg', 'Contato criado com sucesso!');
     }
 
     public function edit(Contact $contact)
@@ -44,5 +44,12 @@ class ContactController extends Controller
     {
         $contact = Contact::findOrFail($id);
         return view('contacts.show.index', ['contact' => $contact]);
+    }
+
+    public function destroy(Contact $contact)
+    {
+        $contact->delete();
+
+        return redirect()->back()->with('msg', 'Contato deletado com sucesso!');
     }
 }

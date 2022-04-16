@@ -17,13 +17,15 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ContactController::class, 'index'])->name('site.home');
 
-Route::get('contacts/create', [ContactController::class, 'create'])->name('site.create');
-Route::post('contacts/create', [ContactController::class, 'store'])->name('site.create.post');
+Route::get('contacts/create', [ContactController::class, 'create'])->name('site.create')->middleware('auth');
+Route::post('contacts/create', [ContactController::class, 'store'])->name('site.create.post')->middleware('auth');
 
-Route::get('contact/{contact}', [ContactController::class, 'edit'])->name('site.edit');
-Route::patch('contact/{contact}', [ContactController::class, 'update'])->name('site.edit.update');
+Route::get('contact/{contact}', [ContactController::class, 'edit'])->name('site.edit')->middleware('auth');
+Route::patch('contact/{contact}', [ContactController::class, 'update'])->name('site.edit.update')->middleware('auth');
 
-Route::get('contact/details/{contact}', [ContactController::class, 'show'])->name('site.show');
+Route::get('contact/details/{contact}', [ContactController::class, 'show'])->name('site.show')->middleware('auth');
+
+Route::post('contact/delete/{contact}', [ContactController::class, 'destroy'])->name('site.delete')->middleware('auth');
 
 Route::middleware([
     'auth:sanctum',

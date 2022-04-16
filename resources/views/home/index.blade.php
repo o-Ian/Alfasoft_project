@@ -26,10 +26,17 @@
             <td>{{ $contact->email }}</td>
             <div class="btn-group"> 
             <td><button class="btn btn-primary"><a href="{{ route('site.edit', ['contact' => $contact]) }}">Editar</a></button></td>
-            <td><button class="btn btn-danger">Excluir</button></td>
+            <td>
+              <form action="{{ route('site.delete', ['contact' => $contact]) }}" method="POST">
+                @csrf
+                @method('DELETE')
+                <input type="hidden" name='_method' value="">
+              <button class="btn btn-danger">Excluir</button>
+            </form>
+            </td>
             </div>
-              </a>
           </tr>
+          
         @endforeach
     </tbody>
   </table>
