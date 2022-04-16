@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\ContactController;
+use App\Models\Contact;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,9 +15,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [ContactController::class, 'index'])->name('site.home');
+
+Route::get('contacts/create', [ContactController::class, 'create'])->name('site.create');
+Route::post('contacts/create', [ContactController::class, 'store'])->name('site.create.post');
+
+Route::get('contact/{contact}', [ContactController::class, 'edit'])->name('site.edit');
+
+Route::get('contact/details/{contact}', [ContactController::class, 'show'])->name('site.show');
 
 Route::middleware([
     'auth:sanctum',
