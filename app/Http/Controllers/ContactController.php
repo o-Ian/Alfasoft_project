@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ContactRequest;
 use App\Models\Contact;
 use Illuminate\Http\Request;
 
@@ -24,7 +25,7 @@ class ContactController extends Controller
     {
         Contact::create($request->all());
 
-        return redirect()->route('site.home')->with('msg', 'Contato criado com sucesso!');
+        return redirect()->route('site.create')->with('msg', 'Contato criado com sucesso!');
     }
 
     public function edit(Contact $contact)
@@ -32,11 +33,11 @@ class ContactController extends Controller
         return view('contacts.edit.index', ['contact' => $contact]);
     }
 
-    public function update(Request $request, Contact $contact)
+    public function update(ContactRequest $request, Contact $contact)
     {
         $contact->update($request->all());
 
-        return redirect()->route('site.home')->with('msg', 'Contato editado com sucesso!');
+        return redirect()->route('site.home', ['contact' => $contact])->with('msg', 'Contato editado com sucesso!');
     }
 
     public function show($id)

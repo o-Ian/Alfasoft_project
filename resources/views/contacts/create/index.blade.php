@@ -10,15 +10,24 @@
     @csrf
     <div class="form-group">
         <label for="name">Contato:</label>
-        <input type="text" class="form-control" id="name" name="name" minlength="5" placeholder="Nome do contato" required>
+        <input type="text" class="form-control" value="{{ old('name') }}" id="name" name="name" placeholder="Nome do contato" >
+    @error('name')
+        <span class="text-sm alert-danger">{{$message}}</span>
+    @enderror
     </div>
     <div class="form-group">
         <label for="number">Número</label>
-        <input type="number" class="form-control" id="number" name="number" placeholder="Número do contato" required>
+        <input type="number" class="form-control" value="{{ old('number') }}" id="number" name="number" placeholder="Número do contato" >
+    @error('number')
+        <span class="text-sm alert-danger">{{$message}}</span>
+    @enderror
     </div>
     <div class="form-group">
         <label for="email">E-mail</label>
-        <input type="email" class="form-control" id="email" name="email" placeholder="E-mail do contato" required>
+        <input type="" class="form-control" value="{{ old('email') }}" id="email" name="email" placeholder="E-mail do contato" >
+    @error('email')
+        <span class="text-sm alert-danger">{{$message}}</span>
+    @enderror
     </div>
    
     <input type="submit" value="Criar contato" class="btn btn-primary">
