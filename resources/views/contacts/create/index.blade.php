@@ -10,7 +10,7 @@
     @csrf
     <div class="form-group">
         <label for="name">Contato:</label>
-        <input type="text" class="form-control" id="name" name="name" placeholder="Nome do contato" required>
+        <input type="text" class="form-control" id="name" name="name" minlength="5" placeholder="Nome do contato" required>
     </div>
     <div class="form-group">
         <label for="number">Número</label>

@@ -18,8 +18,8 @@
     </thead>
     <tbody>
         @foreach ($contacts as $contact)
-            <tr>
-          <a class="selected" href="{{ route('site.show', ['contact' => $contact]) }}">
+
+            <tr class="selected" onclick="location.href='http://alfasoft_project.loc/contact/details/{{$contact->id}}'">
             <th scope="row">{{ $contact->id }}</th>
             <td>{{ $contact->name }}</td>
             <td>{{ $contact->number }}</td>
@@ -28,7 +28,7 @@
             <td><button class="btn btn-primary"><a href="{{ route('site.edit', ['contact' => $contact]) }}">Editar</a></button></td>
             <td><button class="btn btn-danger">Excluir</button></td>
             </div>
-          </a>
+              </a>
           </tr>
         @endforeach
     </tbody>

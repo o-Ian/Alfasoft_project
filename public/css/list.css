@@ -1,3 +1,3 @@
-body{
-    color: blue;
+.selected:hover{
+    color: gray;    
 }
